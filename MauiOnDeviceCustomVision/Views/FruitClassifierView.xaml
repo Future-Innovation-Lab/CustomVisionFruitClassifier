@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiOnDeviceCustomVision.Views.FruitClassifierView"
+                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="Apples and Bananas">
+
+    <ContentPage.Background >
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Color="MistyRose"
+                       Offset="0.1" />
+            <GradientStop Color="DarkGray"
+                       Offset="1.0" />
+        </LinearGradientBrush>
+
+    </ContentPage.Background>
+
+    <Grid Padding="5" RowSpacing="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Text="{Binding ImageCaption}" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center" Grid.Row ="1" />
+
+        <Border Margin="10" Stroke="Black" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row ="2"
+     StrokeThickness="4"
+     StrokeShape="RoundRectangle 10,10,10,10"
+     Padding="0"
+     >
+            <Image Aspect="AspectFill" Source="{Binding PhotoImage}"/>
+
+
+            <Border.Background >
+                <RadialGradientBrush Center="0.1,0.8">
+                    <GradientStop Color="Beige"
+               Offset="0.5" />
+                    <GradientStop Color="White"
+               Offset="1.0" />
+                </RadialGradientBrush>
+
+
+
+
+            </Border.Background>
+
+            <Border.Shadow>
+                <Shadow Brush="Black"
+             Offset="20,20"
+             Radius="40"
+             Opacity="0.8" />
+            </Border.Shadow>
+        </Border>
+
+        <Image x:Name="CameraButton" Grid.Row="3" Source="cameraicon.png" VerticalOptions="End">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                     Command="{Binding IdentifyCommand}" />
+            </Image.GestureRecognizers>
+            <Image.Behaviors>
+                <toolkit:AnimationBehavior>
+                    <toolkit:AnimationBehavior.AnimationType>
+                        <toolkit:FadeAnimation Opacity="0.5" />
+                    </toolkit:AnimationBehavior.AnimationType>
+                </toolkit:AnimationBehavior>
+            </Image.Behaviors>
+
+            <Image.Shadow>
+                <Shadow Brush="Black"
+             Offset="20,20"
+             Radius="40"
+             Opacity="0.8" />
+            </Image.Shadow>
+        </Image>
+    </Grid>
+</ContentPage>
